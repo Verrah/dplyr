@@ -99,7 +99,8 @@ vars_select_syms <- function(vars, funs, tbl, strict = FALSE) {
   }
 
   group_vars <- group_vars(tbl)
-  group_syms <- base::setdiff(syms(group_vars), syms)
-  group_syms <- set_names(group_syms, group_vars)
-  c(group_syms, syms)
+  group_syms <- set_names(syms(group_vars), group_vars)
+
+  all_syms   <- c(syms, group_syms)
+  all_syms[!duplicated(all_syms)]
 }
