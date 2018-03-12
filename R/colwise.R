@@ -120,7 +120,7 @@ print.any_vars <- function(x, ...) {
 
 # Requires tbl_vars() method
 tbl_at_vars <- function(tbl, vars) {
-  tibble_vars <- tbl_nongroup_vars(tbl)
+  tibble_vars <- tbl_vars(tbl)
 
   if (is_character(vars)) {
     vars
