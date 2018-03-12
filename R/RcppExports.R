@@ -87,7 +87,7 @@ filter_impl <- function(df, quo) {
 }
 
 grouped_df_impl <- function(data, symbols, drop) {
-    .Call(`_dplyr_grouped_df_impl`, data, symbols, drop)
+    .Call(`_dplyr_grouped_df_impl`, data, symbols, drop, package = "dplyr")
 }
 
 as_regular_df <- function(df) {
