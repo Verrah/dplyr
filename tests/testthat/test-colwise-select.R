@@ -87,3 +87,13 @@ test_that("rename_all() works with grouped data (#3363)", {
   out <- df %>% group_by(a) %>% rename_all(toupper)
   expect_identical(out, group_by(data.frame(a = 1, B = 2), a))
 })
+
+test_that("rename_at can rename a grouping variable", {
+  tbl <- data_frame(gr1 = rep(1:2, 4), gr2 = rep(1:2, each = 4), x = 1:8) %>%
+    group_by(gr1)
+
+  expect_identical(
+    rename_at(tbl, vars(gr1), toupper),
+    rename(tbl, GR1 = gr1)
+  )
+})
